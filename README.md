@@ -4,6 +4,7 @@
 I made this tool because the old PySpy was deprecated and sometimes you get baited when using a blops.
 Eve Threat listens to the changes of your clipboard and makes a request to our servers and retrieves important information.
 Eve Threat contains only the kills of 2025 and it keeps listening to zKillboard to update our database.
+
 The information listed can be useful for Blops hunters or for ratters.
 
 If you find Eve Threat helpful and would like to support its development feel free to send ISK in-game to: **Warrior Alpha**
