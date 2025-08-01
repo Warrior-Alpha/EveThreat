@@ -1,14 +1,14 @@
 <img width="1089" height="224" alt="image" src="https://github.com/user-attachments/assets/475a5110-734c-466c-92b9-0ccb4acb6a3b" />
 
 # EveThreat
-I made this tool because the old PySpy was deprecated and sometimes you get baited when using a blops.
+I made this tool because the old PySpy was deprecated, and getting baited during blops hunts sucks — so I built this as a replacement.
 
 Eve Threat is a lightweight and modern intel tool for EVE Online, designed to instantly analyze character names from the in-game local chat window.
 The backend focuses on 2025 killmail data and is updated automatically using Zkillboard's API to ensure accuracy going forward.
 Eve Threat connects to a centralized server that handles all data processing, so users don’t need to worry about API keys, rate limits, or local data syncing.
 Eve Threat listens to the changes of your clipboard and makes a request to our servers and retrieves important information.
 
-The information listed can be useful for Blops hunters or for ratters.
+The information listed can be useful for blops hunters or for ratters.
 
 If you find Eve Threat helpful and would like to support its development feel free to send ISK in-game to: **Warrior Alpha**
 Note: Only killmails from 2025 are synced. Some killmails might display an incorrect kill date, due to the fact of using bulk killmail importer. Recent kills will have the correct dates.
