@@ -11,7 +11,7 @@ Eve Threat listens to the changes of your clipboard and makes a request to our s
 The information listed can be useful for Blops hunters or for ratters.
 
 If you find Eve Threat helpful and would like to support its development feel free to send ISK in-game to: **Warrior Alpha**
-
+Note: Only killmails from 2025 are synced. Some killmails might display an incorrect kill date, due to the fact of using bulk killmail importer. Recent kills will have the correct dates.
 
 # How To Use It
 - Open Eve Threat
