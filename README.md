@@ -31,5 +31,9 @@ https://discord.gg/wwzHHGw5uM
 Currently only supported for Windows (should run fine on Wine, but didn't test). 
 Can look to build a version for Linux and macOS as well.
 
+# Licensing
+Eve Threat is currently released under the [Fair Source License 1.0](LICENSE.txt), which allows free personal use but restricts redistribution and reuse without permission.
+🛠️ **Open Source Intent**: The project will transition to the [MIT License](https://opensource.org/licenses/MIT) once it reaches a stable milestone. This will open the project for full community contribution and reuse.
+
 # Copyright notice
 EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. CCP is in no way responsible for the content on or functioning of this website, nor can it be liable for any damage arising from the use of this website.
