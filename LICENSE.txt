@@ -1,0 +1,15 @@
+Fair Source License 1.0
+
+Copyright (c) 2025 Warrior Alpha
+
+Permission is granted, free of charge, to any individual or legal entity (the "User") to use this software for personal, non-commercial use only. Users may view, inspect, and modify the source code for personal purposes, but may not distribute, sublicense, or use the Software for any other purpose without prior permission from the Licensor.
+
+This license is not open source. For more details, see: https://fair.io
+
+---
+
+⚠️ Licensing Roadmap:
+
+The author intends to relicense this project under the [MIT License] at a later date, once the project reaches a stable and mature version. This will allow the community to freely use and contribute under open source terms.
+
+Until then, the software is licensed under the Fair Source License 1.0.
