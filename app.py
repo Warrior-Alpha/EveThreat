@@ -10,7 +10,11 @@ from PIL import Image, ImageTk
 from io import BytesIO
 import webbrowser
 import os
+from tkinter import messagebox
 
+
+OPT_IN_CLIPBOARD = False
+RECENT_VALUE = ""
 
 def check_name_validity(char_name):
     if len(char_name) < 3 or len(char_name) > 37 or char_name.count(' ') > 2:
@@ -31,12 +35,12 @@ def analyze_chars(char_names, result_queue):
 
 
 def clipboard_watcher(result_queue, stop_event):
-    recent_value = ""
+    global RECENT_VALUE
     while not stop_event.is_set():
         try:
             clipboard = pyperclip.paste()
-            if clipboard != recent_value:
-                recent_value = clipboard
+            if clipboard != RECENT_VALUE and OPT_IN_CLIPBOARD:
+                RECENT_VALUE = clipboard
                 char_names = clipboard.strip().splitlines()
                 if len(char_names) > 3500:
                     time.sleep(0.5)
@@ -126,6 +130,19 @@ class EveThreatApp(tk.Tk):
             self.tree.column(col, anchor="center", width=100, stretch=True)
 
         self.tree.pack(side="left", fill="both", expand=True)
+
+        self.clipboard_monitoring = tk.BooleanVar(value=False)
+        self.checkbox = tk.Checkbutton(text="Allow access to my clipboard",
+                                        variable=self.clipboard_monitoring, command=self.toggle_clipboard_access)
+        self.checkbox.pack(pady=5)
+
+        # Analyze Clipboard button
+        self.analyze_button = tk.Button(text="Analyze clipboard", command=self.manual_analyze_clipboard)
+        if self.clipboard_monitoring.get():
+            self.analyze_button.pack_forget()
+        else:
+            self.analyze_button.pack(pady=5)
+
 
         # === Scrollbar ===
         scrollbar = ttk.Scrollbar(container, orient="vertical", command=self.tree.yview)
@@ -291,7 +308,9 @@ class EveThreatApp(tk.Tk):
             "- Initial release.\n"
             "- Clipboard monitoring.\n"
             "- Fetch characters via an API.\n"
-            "- Ignore by right clicking and reset by clicking on the \"ignore\" counter.\n"
+            "- Ignore by right clicking and reset by clicking on the \"ignore\" counter.\n\n"
+            "v1.1\n"
+            "- Added opt-in for clipboard access"
         )
 
         label = tk.Label(changelog_window,
@@ -412,6 +431,30 @@ class EveThreatApp(tk.Tk):
     def on_close(self):
         self.stop_event.set()
         self.destroy()
+
+    def toggle_clipboard_access(self):
+        global OPT_IN_CLIPBOARD
+        if self.clipboard_monitoring.get():
+            OPT_IN_CLIPBOARD = True
+            self.analyze_button.pack_forget()
+        else:
+            OPT_IN_CLIPBOARD = False
+            self.analyze_button.pack(pady=5)
+
+    def manual_analyze_clipboard(self):
+        global RECENT_VALUE
+        try:
+            if pyperclip.paste() != RECENT_VALUE:
+                RECENT_VALUE = pyperclip.paste()
+                char_names = RECENT_VALUE.strip().splitlines()
+                if len(char_names) > 3500:
+                    return False
+                if not all(check_name_validity(name) for name in char_names):
+                    return False
+                threading.Thread(target=analyze_chars, args=(char_names, self.result_queue)).start()
+            return False
+        except tk.TclError:
+            messagebox.showerror("Error", "Unable to read clipboard.")
 
 
 class ToolTip:
